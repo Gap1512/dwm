@@ -94,10 +94,10 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", terminal_primary_bg, "-nf", terminal_primary_fg, "-sb", terminal_primary_bg, "-sf", terminal_normal_orange, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
-static const char *cmdprintscreen[]  = { "scrot", "-q", "100", "/home/gap1512/Screenshots/%Y-%m-%d-%s_$wx$h.jpg", NULL };
-static const char *raisevolume[] = { "sh", "-c", "pactl set-sink-mute 1 false ; pactl set-sink-volume 1 +10%", NULL };
-static const char *lowervolume[] = { "sh", "-c", "pactl set-sink-mute 1 false ; pactl set-sink-volume 1 -10%", NULL };
-static const char *mutevolume[] = { "pactl", "set-sink-mute", "1", "toggle", NULL };
+static const char *cmdprintscreen[]  = { "scrot", "$HOME/Screenshots/%Y-%m-%d-%s_$wx$h.jpg", "-s", "-q", "100", NULL };
+static const char *raisevolume[] = { "sh", "-c", "pactl set-sink-mute 1 false ; pactl set-sink-volume @DEFAULT_SINK@ +5%", NULL };
+static const char *lowervolume[] = { "sh", "-c", "pactl set-sink-mute 1 false ; pactl set-sink-volume @DEFAULT_SINK@ -5%", NULL };
+static const char *mutevolume[] = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
 
 static Key keys[] = {
 	/* modifier                     key             function        argument */
